@@ -25,3 +25,45 @@ Néhány kulcsfontosságú jellemzője a felhőtechnológiának:
 - **Measured service:** A felhőszolgáltatások általában mértek, azaz a felhasználók csak az általuk fogyasztott erőforrásokért fizetnek. Ez a fizet-ahogy-használod modell költségmegtakarítást eredményezhet a hagyományos IT-infrastruktúrához képest, ahol az erőforrásokat előre biztosítják.
 
 Ezek a felhőszolgáltatások lehetővé teszik a felhasználók számára, hogy a számítási erőforrásokat rugalmasan, skálázható módon és gyakran fizetési modell alapján használják, ami általában lehetővé teszi a költségek csökkentését és az erőforrások hatékonyabb kihasználását.
+
+### 2.
+
+### Miből áll egy JWT token?
+
+Egy JWT (JSON Web Token) három részből áll, melyeket pontokkal vannak elválasztva:
+
+**Header (Fejléc):** Ez a token típusát és az alkalmazott algoritmust tartalmazza. Általában ez JSON formátumú, és tartalmazza a token típusát (typ), valamint az alkalmazott algoritmus leírását (alg). Például:
+
+<pre><code>
+{
+  "typ": "JWT",
+  "alg": "HS256"
+}
+</code></pre>
+
+**Payload (Tartalom):** Ez a JWT ténylegesen használt adatokat tartalmazza, mint például a felhasználó azonosítója, jogosultságok vagy egyéb információk. Ez is JSON formátumban van, és tetszőlegesen kibővíthető a szükséges adatokkal. Például:
+
+<pre><code>
+{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "admin": true
+}
+</code></pre>
+
+**Signature (Aláírás):** Ez a token digitális aláírása, amelyet a fejléc és a tartalom alapján hoznak létre, és titkosítják a kibocsátó által használt kulcs segítségével. Az aláírás a token validitásának ellenőrzésére szolgál, és biztosítja, hogy a token tartalma nem változik meg. Például:
+
+
+<pre><code>
+HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  secret
+)
+</code></pre>
+Az összes részt pontokkal választják el egymástól, így egy JWT tokennek a következő formátuma van:
+
+<pre><code>
+header.payload.signature
+</code></pre>
+Fontos megjegyezni, hogy a JWT tokenek alapvetően nem titkosítottak, csak aláírva vannak. Ez azt jelenti, hogy a token tartalma könnyen olvasható, ha valaki hozzáfér hozzá, ezért ne tároljon érzékeny adatokat a JWT tartalmában, különben azok bárki számára hozzáférhetővé válhatnak. Titkosításhoz külön lépéseket kell tenni.
