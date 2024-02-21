@@ -53,7 +53,6 @@ Egy JWT (JSON Web Token) három részből áll, melyeket pontokkal vannak elvál
 
 **Signature (Aláírás):** Ez a token digitális aláírása, amelyet a fejléc és a tartalom alapján hoznak létre, és titkosítják a kibocsátó által használt kulcs segítségével. Az aláírás a token validitásának ellenőrzésére szolgál, és biztosítja, hogy a token tartalma nem változik meg. Például:
 
-
 <pre><code>
 HMACSHA256(
   base64UrlEncode(header) + "." +
@@ -61,9 +60,48 @@ HMACSHA256(
   secret
 )
 </code></pre>
+
 Az összes részt pontokkal választják el egymástól, így egy JWT tokennek a következő formátuma van:
 
 <pre><code>
 header.payload.signature
 </code></pre>
+
 Fontos megjegyezni, hogy a JWT tokenek alapvetően nem titkosítottak, csak aláírva vannak. Ez azt jelenti, hogy a token tartalma könnyen olvasható, ha valaki hozzáfér hozzá, ezért ne tároljon érzékeny adatokat a JWT tartalmában, különben azok bárki számára hozzáférhetővé válhatnak. Titkosításhoz külön lépéseket kell tenni.
+
+### 3.
+
+### Javaban mik azokat a class loaderek?
+
+A "class loader" egy olyan komponens a Java nyelvben és a Java virtuális gépben (JVM), amely felelős az osztályok betöltéséért a futásidőben.
+Az osztályokat a JVM virtuális gép futása közben tölti be a bytecode-ból.
+A class loader felelős azért, hogy megtalálja az osztályokat a megfelelő forrásból (például a fájlrendszerből, a hálózatról stb.), és betöltse őket a JVM-ben futó program számára.
+
+### 4.
+
+### Javaban mik a kévetelek?
+
+A kivételek (exceptions) olyan események, amelyek az adott program futása során bekövetkeznek, és eltérnek a normális végrehajtástól. Ezek a hibák lehetnek a program által nem várt feltételek, például rossz bemeneti adatok, hibás műveletek vagy külső tényezők miatt.
+
+**Ellenőrzött kivételek** (Checked Exceptions): Ezek olyan kivételek, amelyeket a programnak vagy kezelnie kell, vagy meg kell jegyeznie, hogy továbbadja őket a hívó kódnak. Ezeket a kivételeket a throws kulcsszó segítségével lehet jelezni a metódus fejlécében. Például a FileNotFoundException, amely akkor keletkezik, ha egy fájl nem található.
+
+```java
+public void readFromFile() throws FileNotFoundException {
+    // Fájl olvasása
+}
+```
+
+**Nem ellenőrzött kivételek** (Unchecked Exceptions): Ezek olyan kivételek, amelyeket a programozó nem köteles kezelni. Ezek a kivételek a futás idején jelentkeznek, és általában olyan súlyos problémákat jelölnek, mint például a NullPointerExcpetion vagy az ArrayIndexOutOfBoundsException. Ezek a kivételek az Error vagy RuntimeException osztályból származnak.
+
+```java
+public void divide(int a, int b) {
+    if (b == 0) {
+        throw new ArithmeticException("Cannot divide by zero");
+    } else {
+        int result = a / b;
+        System.out.println("Result: " + result);
+    }
+}
+```
+
+A Java-ban a kivételek kezelésére több módszer is létezik, például a try-catch blokkok, amelyek lehetővé teszik a kód végrehajtásának megállítását és a kivétel kezelését. 
