@@ -104,4 +104,29 @@ public void divide(int a, int b) {
 }
 ```
 
-A Java-ban a kivételek kezelésére több módszer is létezik, például a try-catch blokkok, amelyek lehetővé teszik a kód végrehajtásának megállítását és a kivétel kezelését. 
+A Java-ban a kivételek kezelésére több módszer is létezik, például a try-catch blokkok, amelyek lehetővé teszik a kód végrehajtásának megállítását és a kivétel kezelését.
+
+### 5.
+
+### Mi az a normalizálás, mi az 1, 2, 3. normálforma?
+
+Az adatbázisoknál a normalizálás egy adatbázis tervezési eljárás, amelynek célja az adatok redundanciájának csökkentése és az adatbázis strukturális integritásának javítása.
+
+**1NF:**
+Az adatok első normálformában való elhelyezése az egyik alapvető lépés a relációs adatbázisok tervezése során. A normálformák hierarchiájában az első normálforma (1NF) azt jelenti, hogy egy adatbázis táblájában minden attribútum csak egyetlen értéket tartalmaz egy adott oszlopban és egy adott sorban.
+
+Más szóval az első normálforma azt követeli meg, hogy minden cellában csak egy elem legyen jelen, tehát ne legyen többértékű attribútum vagy lista. Ha egy attribútum több értéket tartalmaz, akkor azt úgy kell felbontani, hogy minden érték külön oszlop legyen.
+
+Például, ha egy "Könyv" táblában szerepel egy "Szerző" attribútum, és egy könyvnek több szerzője van, akkor az első normálforma értelmében nem lehet egy oszlopban felsorolni a szerzőket vesszővel elválasztva. Ehelyett minden szerzőt külön oszlopba kell szétválasztani, vagy egy külön "Szerző" táblába kell helyezni, és azonosítókkal kell hivatkozni rájuk.
+
+**2NF:**
+
+A második normálforma akkor érhető el, amikor egy tábla minden nem elsődleges attribútuma teljes mértékben funkcionálisan függ a teljes elsődleges kulcstól
+
+Például, ha Player_Inventory táblában van egy Player_ID elsődleges kulcs, akkor a Palyer_rating nem elsődleges kulcs minden egyes sora függ az elsődleges kulcstól.
+
+**3NF:**
+
+A 3NF célja, hogy minden adat csak egyetlen helyen legyen tárolva az adatbázisban, és hogy minden nem-kulcs attribútum kizárólag a kulcsoktól függjön.
+
+Például, ha az előző Player_Inventory táblában behozok egy skill level és rating olszopot. Ekkor bár ezek külön-külön függnek a kulcstól, de rating függ a level-től. Ilyenkor érdemes külön táblában tárolni az egyes levelkhez tartozó ratinget.
