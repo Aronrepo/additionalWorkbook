@@ -130,3 +130,15 @@ Például, ha Player_Inventory táblában van egy Player_ID elsődleges kulcs, a
 A 3NF célja, hogy minden adat csak egyetlen helyen legyen tárolva az adatbázisban, és hogy minden nem-kulcs attribútum kizárólag a kulcsoktól függjön.
 
 Például, ha az előző Player_Inventory táblában behozok egy skill level és rating olszopot. Ekkor bár ezek külön-külön függnek a kulcstól, de rating függ a level-től. Ilyenkor érdemes külön táblában tárolni az egyes levelkhez tartozó ratinget.
+
+### 6.
+
+### ACID
+
+**Atomitás (Atomicity):** Egy tranzakció vagy teljesen megtörténik, vagy egyáltalán nem. Ez azt jelenti, hogy ha egy tranzakció több lépésből áll, az csak akkor lesz végrehajtva, ha minden lépése sikeres. Ha bármelyik lépés sikertelen, akkor a tranzakció visszavonásra kerül, és az adatbázis visszakerül az eredeti állapotba.
+
+**Konzisztencia (Consistency):** Az adatbázisnak minden tranzakció után konzisztens állapotban kell lennie. Ez azt jelenti, hogy a tranzakciók végrehajtása során az adatbázisba bevitt változtatásoknak meg kell felelniük minden meghatározott üzleti szabálynak és adatintegritási megkötésnek.
+
+**Izoláció (Isolation):** Különböző tranzakciók egymástól való elkülönítettségét jelenti. Ez biztosítja, hogy a tranzakciók párhuzamos végrehajtása esetén ne zavarjanak egymást, és ne vezessenek inkonzisztens állapotokhoz az adatbázisban. Az izoláció biztosítja a tranzakciók által egyszerre elérhető adatok integritását.
+
+**Tartósság (Durability):** Ez a tulajdonság azt jelenti, hogy a tranzakciók végrehajtása után az adatok maradéktalanul és véglegesen eltárolódnak az adatbázisban, még akkor is, ha a rendszer esetleg hibás vagy leáll. A tartósság biztosítja, hogy az adatok ne vesszenek el a rendszer hibája vagy leállása esetén.
