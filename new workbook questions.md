@@ -137,8 +137,27 @@ Például, ha az előző Player_Inventory táblában behozok egy skill level és
 
 **Atomitás (Atomicity):** Egy tranzakció vagy teljesen megtörténik, vagy egyáltalán nem. Ez azt jelenti, hogy ha egy tranzakció több lépésből áll, az csak akkor lesz végrehajtva, ha minden lépése sikeres. Ha bármelyik lépés sikertelen, akkor a tranzakció visszavonásra kerül, és az adatbázis visszakerül az eredeti állapotba.
 
-**Konzisztencia (Consistency):** Az adatbázisnak minden tranzakció után konzisztens állapotban kell lennie. Ez azt jelenti, hogy a tranzakciók végrehajtása során az adatbázisba bevitt változtatásoknak meg kell felelniük minden meghatározott üzleti szabálynak és adatintegritási megkötésnek.
+**Konzisztencia (Consistency):** == Correctness. Az adatbázisnak minden tranzakció után konzisztens állapotban kell lennie. Ez azt jelenti, hogy a tranzakciók végrehajtása során az adatbázisba bevitt változtatásoknak meg kell felelniük minden meghatározott üzleti szabálynak és adatintegritási megkötésnek. Például, ha meg van határozva egy constraint, akkor annak igaznak kell lennie a tranzakció után is.
 
 **Izoláció (Isolation):** Különböző tranzakciók egymástól való elkülönítettségét jelenti. Ez biztosítja, hogy a tranzakciók párhuzamos végrehajtása esetén ne zavarjanak egymást, és ne vezessenek inkonzisztens állapotokhoz az adatbázisban. Az izoláció biztosítja a tranzakciók által egyszerre elérhető adatok integritását.
 
 **Tartósság (Durability):** Ez a tulajdonság azt jelenti, hogy a tranzakciók végrehajtása után az adatok maradéktalanul és véglegesen eltárolódnak az adatbázisban, még akkor is, ha a rendszer esetleg hibás vagy leáll. A tartósság biztosítja, hogy az adatok ne vesszenek el a rendszer hibája vagy leállása esetén.
+
+### 7.
+
+### Garbage Collector
+
+Java Garbage Collector (GC) része a JVM-nek. Feladata, hogy autómatikusan kezelje a memóriát. A fő feladata, hogy felszabadítsa a memória azon területeit, amit olyan objektumok használnak, amire már nincs szükség vagy nem mutat rájuk referencia. Ez a mememória szivárgást meggátolja javítja a memória felhasználást.
+
+Amikor a java létrehoz egy objektumot(példányt), akkor ez allokál egy memóriát a heapről. Ha már nem mutat rá semmi, akkor ezt a GC azonosítja, hogy deallokálja. Felszabadítja a területet más objektumok számára.
+
+Több algoritmust használ a GC, hogy memóriát szabadítson fel, pl a mark-and-sweep-et. Különöbző algoritmusok különböző területetit kezelik a heap-nek és különöböző aspekutsok szerint igényelik vissza a területet, mint pl elérhetőség, kor.
+
+### 8.
+
+### Java multithreading
+
+A többszálúság (multi-threading) egy olyan programozási megközelítés, amely lehetővé teszi, hogy egy alkalmazás egyszerre több feladatot (szálat) futtasson. A Java-ban a többszálúságot a Thread osztály vagy a Runnable interfész segítségével valósíthatjuk meg.
+
+Amikor egy Java alkalmazást többszálasan írunk, több szál futása lehetővé teszi az idő és erőforrások hatékonyabb kihasználását. Például egy szál lehet felelős egy hálózati kommunikációért, míg egy másik adatbázis-lekérdezésekért, és így tovább. Ezáltal a program azonos idő alatt több feladatot végezhet el, ami növeli az alkalmazás teljesítményét és reaktivitását.
+
