@@ -71,43 +71,6 @@ Fontos megjegyezni, hogy a JWT tokenek alapvetően nem titkosítottak, csak alá
 
 ### 3.
 
-### Javaban mik azokat a class loaderek?
-
-A "class loader" egy olyan komponens a Java nyelvben és a Java virtuális gépben (JVM), amely felelős az osztályok betöltéséért a futásidőben.
-Az osztályokat a JVM virtuális gép futása közben tölti be a bytecode-ból.
-A class loader felelős azért, hogy megtalálja az osztályokat a megfelelő forrásból (például a fájlrendszerből, a hálózatról stb.), és betöltse őket a JVM-ben futó program számára.
-
-### 4.
-
-### Javaban mik a kévetelek?
-
-A kivételek (exceptions) olyan események, amelyek az adott program futása során bekövetkeznek, és eltérnek a normális végrehajtástól. Ezek a hibák lehetnek a program által nem várt feltételek, például rossz bemeneti adatok, hibás műveletek vagy külső tényezők miatt.
-
-**Ellenőrzött kivételek** (Checked Exceptions): Ezek olyan kivételek, amelyeket a programnak vagy kezelnie kell, vagy meg kell jegyeznie, hogy továbbadja őket a hívó kódnak. Ezeket a kivételeket a throws kulcsszó segítségével lehet jelezni a metódus fejlécében. Például a FileNotFoundException, amely akkor keletkezik, ha egy fájl nem található.
-
-```java
-public void readFromFile() throws FileNotFoundException {
-    // Fájl olvasása
-}
-```
-
-**Nem ellenőrzött kivételek** (Unchecked Exceptions): Ezek olyan kivételek, amelyeket a programozó nem köteles kezelni. Ezek a kivételek a futás idején jelentkeznek, és általában olyan súlyos problémákat jelölnek, mint például a NullPointerExcpetion vagy az ArrayIndexOutOfBoundsException. Ezek a kivételek az Error vagy RuntimeException osztályból származnak.
-
-```java
-public void divide(int a, int b) {
-    if (b == 0) {
-        throw new ArithmeticException("Cannot divide by zero");
-    } else {
-        int result = a / b;
-        System.out.println("Result: " + result);
-    }
-}
-```
-
-A Java-ban a kivételek kezelésére több módszer is létezik, például a try-catch blokkok, amelyek lehetővé teszik a kód végrehajtásának megállítását és a kivétel kezelését.
-
-### 5.
-
 ### Mi az a normalizálás, mi az 1, 2, 3. normálforma?
 
 Az adatbázisoknál a normalizálás egy adatbázis tervezési eljárás, amelynek célja az adatok redundanciájának csökkentése és az adatbázis strukturális integritásának javítása.
@@ -131,7 +94,7 @@ A 3NF célja, hogy minden adat csak egyetlen helyen legyen tárolva az adatbázi
 
 Például, ha az előző Player_Inventory táblában behozok egy skill level és rating olszopot. Ekkor bár ezek külön-külön függnek a kulcstól, de rating függ a level-től. Ilyenkor érdemes külön táblában tárolni az egyes levelkhez tartozó ratinget.
 
-### 6.
+### 4.
 
 ### ACID
 
@@ -143,21 +106,6 @@ Például, ha az előző Player_Inventory táblában behozok egy skill level és
 
 **Tartósság (Durability):** Ez a tulajdonság azt jelenti, hogy a tranzakciók végrehajtása után az adatok maradéktalanul és véglegesen eltárolódnak az adatbázisban, még akkor is, ha a rendszer esetleg hibás vagy leáll. A tartósság biztosítja, hogy az adatok ne vesszenek el a rendszer hibája vagy leállása esetén.
 
-### 7.
 
-### Garbage Collector
 
-Java Garbage Collector (GC) része a JVM-nek. Feladata, hogy autómatikusan kezelje a memóriát. A fő feladata, hogy felszabadítsa a memória azon területeit, amit olyan objektumok használnak, amire már nincs szükség vagy nem mutat rájuk referencia. Ez a mememória szivárgást meggátolja javítja a memória felhasználást.
-
-Amikor a java létrehoz egy objektumot(példányt), akkor ez allokál egy memóriát a heapről. Ha már nem mutat rá semmi, akkor ezt a GC azonosítja, hogy deallokálja. Felszabadítja a területet más objektumok számára.
-
-Több algoritmust használ a GC, hogy memóriát szabadítson fel, pl a mark-and-sweep-et. Különöbző algoritmusok különböző területetit kezelik a heap-nek és különöböző aspekutsok szerint igényelik vissza a területet, mint pl elérhetőség, kor.
-
-### 8.
-
-### Java multithreading
-
-A többszálúság (multi-threading) egy olyan programozási megközelítés, amely lehetővé teszi, hogy egy alkalmazás egyszerre több feladatot (szálat) futtasson. A Java-ban a többszálúságot a Thread osztály vagy a Runnable interfész segítségével valósíthatjuk meg.
-
-Amikor egy Java alkalmazást többszálasan írunk, több szál futása lehetővé teszi az idő és erőforrások hatékonyabb kihasználását. Például egy szál lehet felelős egy hálózati kommunikációért, míg egy másik adatbázis-lekérdezésekért, és így tovább. Ezáltal a program azonos idő alatt több feladatot végezhet el, ami növeli az alkalmazás teljesítményét és reaktivitását.
 
